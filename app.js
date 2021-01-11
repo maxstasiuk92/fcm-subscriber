@@ -92,12 +92,12 @@ if (
         info.show();
         info_message
             .text('')
-            .append('<strong>'+payload.data.title+'</strong>')
-            .append('<em>'+payload.data.body+'</em>')
+            .append('<strong>'+payload.notification.title+'</strong>')
+            .append('<em>'+payload.notification.body+'</em>')
         ;
 
         // register fake ServiceWorker for show notification on mobile devices
-        navigator.serviceWorker.register('/serviceworker/firebase-messaging-sw.js');
+        navigator.serviceWorker.register('/fcm-subscriber/firebase-messaging-sw.js');
         Notification.requestPermission(function(permission) {
             if (permission === 'granted') {
                 navigator.serviceWorker.ready.then(function(registration) {
